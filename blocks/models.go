@@ -2,23 +2,23 @@ package blocks
 
 type Block struct {
 	Difficulty int
-	ExtraData float64
+	ExtraData uint64
 	GasLimit int
 	GasUsed int
-	Hash float64
+	Hash uint64
 	LogsBloom string
-	Miner float64
+	Miner uint64
 	Number int
-	ParentHash float64
-	ReceiptRoot float64
-	Sha3Uncles float64
+	ParentHash uint64
+	ReceiptRoot uint64
+	Sha3Uncles uint64
 	Size int
-	StateRoot float64
+	StateRoot uint64
 	Timestamp int
-	TotalDifficulty float64
-	Transactions []float64
-	TransactionsRoot float64
-	Uncles []float64
+	TotalDifficulty uint64
+	Transactions []uint64
+	TransactionsRoot uint64
+	Uncles []uint64
 }
 
 //func LastFiveBlocks() ([]Block, error) {
