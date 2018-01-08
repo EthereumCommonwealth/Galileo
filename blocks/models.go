@@ -21,6 +21,6 @@ type Block struct {
 	Uncles []float64
 }
 
-func LastFiveBlocks() ([]Block, error) {
-
-}
+//func LastFiveBlocks() ([]Block, error) {
+//
+//}
