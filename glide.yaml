@@ -1,0 +1,4 @@
+package: github.com/eduartua/callisto/Galileo
+import:
+- package: github.com/gocql/gocql
+- package: github.com/lib/pq
