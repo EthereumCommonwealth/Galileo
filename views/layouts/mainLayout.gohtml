@@ -1,0 +1,19 @@
+{{define "mainLayout"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Callisto Block Explorer</title>
+    <link rel="stylesheet" href="/assets/main.css">
+</head>
+
+<body>
+{{template "navbar"}}
+<div class="container">
+{{template "yield" .}}
+
+{{template "footer"}}
+</div>
+</body>
+</html>
+{{end}}
