@@ -8,9 +8,12 @@ import (
 
 func main() {
 	staticC := controllers.NewStatic()
+	usersC := controllers.NewUsers()
 
 	r := mux.NewRouter()
 	r.Handle("/", staticC.Home).Methods("GET")
+	r.HandleFunc("/signup", usersC.New).Methods("GET")
+	r.HandleFunc("/signup", usersC.Create).Methods("POST")
 
 	//Assets Handlers
 	assetHandler := http.FileServer(http.Dir("./assets"))
