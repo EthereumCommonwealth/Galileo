@@ -102,6 +102,22 @@ func (us *UserService ) Delete(id uint) error {
 	return us.db.Delete(&user).Error
 }
 
+func (us *UserService) Authenticate(email, password string) (*User, error) {
+	foundUser, err := us.ByEmail(email)
+	if err != nil {
+		return nil, err
+	}
+	err = bcrypt.CompareHashAndPassword([]byte(foundUser.PasswordHash), []byte(password + userPwPepper))
+	switch err {
+	case nil:
+		return foundUser, nil
+	case bcrypt.ErrMismatchedHashAndPassword:
+		return nil, ErrIvalidPassword
+	default:
+		return nil, err
+	}
+}
+
 // DestructiveReset drops the user table and rebuilds it
 //This is for use in the development environment -- Do not use this in production!!!
 func (us *UserService ) DestructiveReset() error {
