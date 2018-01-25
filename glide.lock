@@ -1,5 +1,5 @@
 hash: fcdd95ab537d972a4f2dd1fff30995b043524b1b4fafb045c603b2a022834367
-updated: 2018-01-24T22:47:13.489941672-06:00
+updated: 2018-01-25T13:38:41.225629431-06:00
 imports:
 - name: github.com/gocql/gocql
   version: dd47639f787e8583e1a13e17e20a9f6c4332bc29
@@ -30,6 +30,11 @@ imports:
   - oid
 - name: github.com/pkg/errors
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
+- name: golang.org/x/crypto
+  version: 3d37316aaa6bd9929127ac9a527abf408178ea7b
+  subpackages:
+  - bcrypt
+  - blowfish
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 testImports: []
