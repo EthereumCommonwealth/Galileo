@@ -36,7 +36,42 @@ func (u *Users ) Create(w http.ResponseWriter, r *http.Request)  {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprintln(w, "User is", user)
+	err := u.signIn(w, &user)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// Redirect to the cookie test page to test the cookie
+	http.Redirect(w, r, "/cookietest", http.StatusFound)
+}
+
+// Login is used to process the login form
+func (u *Users) Login(w http.ResponseWriter, r *http.Request) {
+	form := LoginForm{}
+	if err := parseForm(r, &form); err != nil {
+		panic(err)
+	}
+
+	user, err := u.us.Authenticate(form.Email, form.Password)
+	if err != nil {
+		switch err {
+		case models.ErrNotFound:
+			fmt.Fprintln(w, "Invalid email address.")
+		case models.ErrIvalidPassword:
+			fmt.Fprintln(w, "Invalid password provided.")
+		case nil:
+			fmt.Fprintln(w, user)
+		default:
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+		return
+	}
+	err = u.signIn(w, user)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, "/cookietest", http.StatusFound)
 }
 
 //Sign the given user in via cookies
