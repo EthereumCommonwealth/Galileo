@@ -1,0 +1,26 @@
+
+.menu {
+    font-size: 18px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.menu a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    display: inline-block;
+    margin-left: 0;
+}
+
+.header {
+    position: relative;
+}
