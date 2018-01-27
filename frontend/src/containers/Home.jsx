@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../client/styles/App.css';
+import '../client/styles/Home.css';
 
-class App extends Component {
+class Home extends Component {
 
   render() {
     return (
@@ -19,4 +19,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Home);
