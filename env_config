@@ -1,0 +1,5 @@
+export GALILEO_DBHOST=localhost
+export GALILEO_DBPORT=5432
+export GALILEO_DBUSER=postgres
+export GALILEO_DBPASS=galileo
+export GALILEO_DBNAME=galileo

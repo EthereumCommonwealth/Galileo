@@ -1,19 +1,34 @@
 package main
 
 import (
-	"github.com/kataras/iris"
-	"fmt"
-	"github.com/EthereumCommonwealth/go-callisto/common"
+	"net/http"
+
+	"github.com/kelseyhightower/envconfig"
+	"github.com/labstack/gommon/log"
+	"github.com/EthereumCommonwealth/Galileo/common"
 	"github.com/EthereumCommonwealth/Galileo/models"
+	"github.com/labstack/echo"
 )
 
 func main() {
-	app := iris.New()
+	// Galileo Settings
 
-	hash := models.Block{Hash: common.StringToHash("asdasdas"), Miner: common.StringToAddress("asdasdasd")}
+	var galileoSetting common.GalileoSetting
+	err := envconfig.Process("galileo", &galileoSetting)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	fmt.Println(hash.Hash)
-	fmt.Println(hash.Hash.Str())
+	// Database
 
-	app.Run(iris.Addr(":8000"))
+	db := models.GetDBConnection(galileoSetting)
+	models.Migrate(db)
+
+	// Server
+
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+	e.Logger.Fatal(e.Start(":8000"))
 }
