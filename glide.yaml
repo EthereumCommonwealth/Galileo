@@ -7,3 +7,4 @@ import:
 - package: github.com/pkg/errors
   version: ^0.8.0
 - package: github.com/kataras/iris
+  version: v10.2.1
