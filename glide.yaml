@@ -1,11 +1,9 @@
-package: github.com/eduartua/callisto/Galileo
+package: github.com/EthereumCommonwealth/Galileo
 import:
-- package: github.com/gocql/gocql
-- package: github.com/gorilla/mux
-  version: ^1.6.1
 - package: github.com/gorilla/schema
 - package: github.com/jinzhu/gorm
   version: ^1.0.0
 - package: github.com/lib/pq
 - package: github.com/pkg/errors
   version: ^0.8.0
+- package: github.com/kataras/iris

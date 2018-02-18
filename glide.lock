@@ -1,40 +1,14 @@
-hash: fcdd95ab537d972a4f2dd1fff30995b043524b1b4fafb045c603b2a022834367
-updated: 2018-01-25T13:38:41.225629431-06:00
+hash: 589a63688491075ffa67652c8f13ee7295495de68f37b12372450fe48ac10ee4
+updated: 2018-02-17T18:54:59.571070949-05:00
 imports:
-- name: github.com/gocql/gocql
-  version: dd47639f787e8583e1a13e17e20a9f6c4332bc29
-  subpackages:
-  - internal/lru
-  - internal/murmur
-  - internal/streams
-- name: github.com/golang/snappy
-  version: 553a641470496b2327abcac10b36396bd98e45c9
-- name: github.com/gorilla/context
-  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
-- name: github.com/gorilla/mux
-  version: 53c1911da2b537f792e7cafcb446b05ffe33b996
 - name: github.com/gorilla/schema
   version: afe77393c53b66afe9212810d9b2013859d04ae6
-- name: github.com/hailocab/go-hostpool
-  version: e80d13ce29ede4452c43dea11e79b9bc8a15b478
 - name: github.com/jinzhu/gorm
   version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
-  subpackages:
-  - dialects/postgres
-- name: github.com/jinzhu/inflection
-  version: 1c35d901db3da928c72a72d8458480cc9ade058f
+- name: github.com/kataras/iris
+  version: cfd33bc7cdc077c11e7da911469321f2e54e3847
 - name: github.com/lib/pq
-  version: 19c8e9ad00952ce0c64489b60e8df88bb16dd514
-  subpackages:
-  - hstore
-  - oid
+  version: 88edab0803230a3898347e77b474f8c1820a1f20
 - name: github.com/pkg/errors
   version: 645ef00459ed84a119197bfb8d8205042c6df63d
-- name: golang.org/x/crypto
-  version: 3d37316aaa6bd9929127ac9a527abf408178ea7b
-  subpackages:
-  - bcrypt
-  - blowfish
-- name: gopkg.in/inf.v0
-  version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 testImports: []
