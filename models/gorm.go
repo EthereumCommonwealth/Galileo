@@ -20,10 +20,24 @@ func GetDBConnection(setting common.GalileoSetting) *gorm.DB {
 
 func Migrate(db *gorm.DB) {
 	migrateBlockTable(db)
+	migrateAddressTable(db)
+	migrateTransactionTable(db)
 }
 
 func migrateBlockTable(db *gorm.DB) {
 	db.AutoMigrate(Block{})
 
 	// Custom block migration here
+}
+
+func migrateAddressTable(db *gorm.DB) {
+	db.AutoMigrate(Address{})
+
+	// Custom address migration here
+}
+
+func migrateTransactionTable(db *gorm.DB) {
+	db.AutoMigrate(Transaction{})
+
+	// Custom Transaction migration here
 }
