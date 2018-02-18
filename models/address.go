@@ -7,6 +7,6 @@ import (
 
 type Address struct {
 	gorm.Model
-	Address common.Address
+	Address common.Address `gorm:"unique_index:address"`
 	Type    string
 }
