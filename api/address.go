@@ -4,8 +4,8 @@ import (
 	"github.com/labstack/echo"
 	"net/http"
 	"github.com/EthereumCommonwealth/Galileo/models"
-	"github.com/EthereumCommonwealth/go-callisto/common"
 	"fmt"
+	"github.com/jinzhu/gorm"
 )
 
 var messages = map[string]string{
@@ -13,12 +13,12 @@ var messages = map[string]string{
 }
 
 func GetAddressDetails(c echo.Context) error {
-	address := c.Param("address")
-	if !common.IsHexAddress(address) {
+	address := models.NewAddress(c.Param("address"))
+	if !address.IsValid() {
 		return c.JSON(http.StatusBadRequest, map[string]string{
-			"Error": fmt.Sprintf(messages["invalid_address"], address),
+			"Error": fmt.Sprintf(messages["invalid_address"], address.Address),
 		})
 	}
-	addr := models.Address{}
-	return c.JSON(http.StatusOK, addr)
+	address.GetAddressDetails(c.Get("db").(*gorm.DB))
+	return c.JSON(http.StatusOK, address)
 }

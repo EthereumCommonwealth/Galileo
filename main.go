@@ -29,10 +29,18 @@ func main() {
 	// Server
 
 	e := echo.New()
+	e.Debug = true
 
 	// Server Middlewares
 
 	e.Pre(middleware.AddTrailingSlash())
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("db", db)
+			return next(c)
+		}
+	})
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{}))
 
