@@ -3,17 +3,20 @@ package models
 import (
 	"errors"
 
+	"github.com/eduartua/callisto/Galileo/rand"
+	"github.com/eduartua/callisto/Galileo/hash"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"golang.org/x/crypto/bcrypt"
-	"github.com/eduartua/callisto/Galileo/rand"
-	"github.com/eduartua/callisto/Galileo/hash"
 )
 
 //This is not a good practice. Remove and use env for production
-const hmacSecretKey = "secret-hmac-key"
+const (
+	userPwPepper  = "secret-random-string"
+	hmacSecretKey = "secret-hmac-key"
+)
 
-var userPwPepper = "secret-random-string"
 var (
 	//ErrNotFound is returned when a resourced cannot be found in the database
 	ErrNotFound = errors.New("models: resource not found")
@@ -21,17 +24,17 @@ var (
 	// ErrInvalidID is returned when an invalid ID is provided
 	// to a method like Delete.
 	ErrInvalidID = errors.New("models: ID provided was invalid")
-	ErrIvalidPassword = errors.New("Invalid password provied")
+	ErrInvalidPassword = errors.New("models: incorrect password provided")
 )
 
 type User struct {
 	gorm.Model
-	Name string
-	Email string `gorm:"not null;unique_index"`
-	Password     string `gorm:"-"`
-	PasswordHash string `gorm:"not null"`
-	Remember     string `gorm:"-"`
-	RememberHash string `gorm:"not null;unique_index"`
+	Name 			string `json:"name"`
+	Email 			string `gorm:"not null;unique_index" json:"email"`
+	Password     	string `gorm:"-" json:"password"`
+	PasswordHash 	string `gorm:"not null" json:"passwordHash"`
+	Remember     	string `gorm:"-" json:"remember"`
+	RememberHash 	string `gorm:"not null;unique_index" json:"rememberHash"`
 }
 
 type UserService struct {
@@ -66,7 +69,8 @@ func (us *UserService) Close() error {
 
 func (us *UserService) ByID(id uint) (*User, error) {
 	var user User
-	err := us.db.Where("id = ?", id).First(&user).Error
+	db := us.db.Where("id = ?", id)
+	err := first(db, &user)
 	switch err {
 	case nil:
 		return &user, nil
@@ -131,7 +135,7 @@ func (us *UserService) Authenticate(email, password string) (*User, error) {
 	case nil:
 		return foundUser, nil
 	case bcrypt.ErrMismatchedHashAndPassword:
-		return nil, ErrIvalidPassword
+		return nil, ErrInvalidPassword
 	default:
 		return nil, err
 	}
@@ -146,6 +150,7 @@ func (us *UserService) ByRemember(token string) (*User, error) {
 	}
 	return &user, nil
 }
+
 
 // DestructiveReset drops the user table and rebuilds it
 //This is for use in the development environment -- Do not use this in production!!!

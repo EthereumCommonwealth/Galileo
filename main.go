@@ -27,15 +27,16 @@ func main() {
 		panic(err)
 	}
 	defer us.Close()
+	us.DestructiveReset()
 	us.AutoMigrate()
 
-	staticC := controllers.NewStatic()
 	usersC := controllers.NewUsers(us)
 
 	r := mux.NewRouter()
-	r.Handle("/", staticC.Home).Methods("GET")
-	r.HandleFunc("/signup", usersC.New).Methods("GET")
+
 	r.HandleFunc("/signup", usersC.Create).Methods("POST")
+	r.HandleFunc("/login", usersC.Login).Methods("POST")
+	r.HandleFunc("/cookietest", usersC.CookieTest).Methods("GET")
 
 	//Assets Handlers
 	assetHandler := http.FileServer(http.Dir("./assets"))
