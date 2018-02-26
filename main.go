@@ -1,21 +1,55 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/eduartua/callisto/Galileo/controllers"
 	"net/http"
+
+	"github.com/kelseyhightower/envconfig"
+	"github.com/labstack/gommon/log"
+	"github.com/EthereumCommonwealth/Galileo/common"
+	"github.com/EthereumCommonwealth/Galileo/models"
+	"github.com/labstack/echo"
+	"github.com/EthereumCommonwealth/Galileo/api"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
-	staticC := controllers.NewStatic()
+	// Galileo Settings
 
-	r := mux.NewRouter()
-	r.Handle("/", staticC.Home).Methods("GET")
+	var galileoSetting common.GalileoSetting
+	err := envconfig.Process("galileo", &galileoSetting)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	//Assets Handlers
-	assetHandler := http.FileServer(http.Dir("./assets"))
-	assetHandler = http.StripPrefix("/assets/", assetHandler)
-	r.PathPrefix("/assets/").Handler(assetHandler)
+	// Database
 
-	http.ListenAndServe(":8080", r)
+	db := models.GetDBConnection(galileoSetting)
+	models.Migrate(db)
+
+	// Server
+
+	e := echo.New()
+	e.Debug = true
+
+	// Server Middlewares
+
+	e.Pre(middleware.AddTrailingSlash())
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("db", db)
+			return next(c)
+		}
+	})
+
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{}))
+
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+
+	e.GET("/addr/:address/", api.GetAddressDetails)
+
+	e.Logger.Fatal(e.Start(":8000"))
 }
