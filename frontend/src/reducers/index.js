@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import appName from './appName';
+import appName from './appName'
 
 const rootReducer = combineReducers(
   {
     name: appName,
-  });
+  })
 
-export default rootReducer;
+export default rootReducer
