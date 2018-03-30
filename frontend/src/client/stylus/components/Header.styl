@@ -1,0 +1,36 @@
+.Header
+  padding 1em 0
+  background $white
+  box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
+  &-logo
+    width 250px
+    margin 0
+    img
+      width 100%
+  &-menu
+    display flex
+    justify-content space-between
+    align-items center
+  &-nav
+    &-content
+      list-style none
+      display flex
+      &-elem
+        align-self center
+        &-anchor
+          padding 1em
+          color #000
+          display block
+        &-search
+          position relative
+          margin-left .5em
+          &-input
+            outline none
+            border solid 1px $gray
+            border-radius 5px
+            padding 8px 36px 8px 8px
+            width 200px
+          &-icon
+            position absolute
+            top 12px
+            right 10px
