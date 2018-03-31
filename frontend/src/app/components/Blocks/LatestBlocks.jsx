@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import LatestBlocksResults from './LatestBlocksResults';
 
 const LatestBlocks = ({ chain }) => (
-  <div className='LatestBlocks container is-first-content'>
+  <div className='LatestBlocks container'>
     <div className='LatestBlocks-top'>
       <h2 className='LatestBlocks-top-title'>Latest {chain} Blocks</h2>
       <a className='LatestBlocks-top-seemore'> See more...</a>

@@ -1,6 +1,30 @@
 .MarketStatus
+  display grid
+  grid-template-rows max-content
   background $blue
-  margin-top .5em
+  margin-top 2em
   box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
   padding 1em
   border-radius 5px
+  &-title
+    margin 0
+    font-family $secondary-font
+    font-size 18px
+    color $white
+    font-size 24px
+  &-content
+    display grid
+    grid-gap 1em
+    &-element
+      display grid
+      align-items center
+      grid-gap 1em
+      grid-template-columns 1fr 1fr
+      color $white
+      font-size 22px
+      &-chain
+        position relative
+        &:before
+          content '='
+          position absolute
+          right 10px

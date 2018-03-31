@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
-const Header = () => (
-  <div className='Header'>
+const Header = ({ chain }) => (
+  <header className='Header'>
     <div className='container'>
       <div className='Header-menu'>
         <Link
@@ -15,6 +16,13 @@ const Header = () => (
         </Link>
         <nav className='Header-nav'>
           <ul className='Header-nav-content no-margin no-padding'>
+            <li className='Header-nav-content-elem'>
+              <span
+                className='Header-nav-content-elem-active'
+              >
+                Active chain: {chain}
+              </span>
+            </li>
             <li className='Header-nav-content-elem'>
               <Link
                 className='Header-nav-content-elem-anchor'
@@ -45,7 +53,11 @@ const Header = () => (
         </nav>
       </div>
     </div>
-  </div>
+  </header>
 )
+
+Header.propTypes = {
+  chain: PropTypes.string,
+};
 
 export default Header

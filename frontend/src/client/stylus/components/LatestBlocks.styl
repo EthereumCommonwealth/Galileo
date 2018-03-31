@@ -9,6 +9,9 @@
       justify-self flex-start
       margin 0
       font-family $secondary-font
+      font-size 18px
+      +from-width($sm)
+        font-size 24px
     &-seemore
       display block
       justify-self flex-end
@@ -21,9 +24,18 @@
     border-radius 5px
     display grid
     border-bottom solid 3px $blue
+    margin-top 1em
     &-head
       display grid
-      grid-template-columns .5fr 1fr 1fr 1fr 1fr
+      grid-template-columns .25fr .5fr 1fr 1fr 1fr
       padding 1em 0
+      +from-width($sm)
+        grid-template-columns .5fr 1fr 1fr 1fr 1fr
     &-title
       font-weight 600
+      font-size 14px
+      grid-gap 10px
+      justify-self center
+      +from-width($sm)
+        font-size 18px
+        justify-self flex-start

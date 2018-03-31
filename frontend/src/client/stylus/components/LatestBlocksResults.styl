@@ -1,7 +1,9 @@
 .LatestBlocksResults
   display grid
-  grid-template-columns .5fr 1fr 1fr 1fr 1fr
-  padding .5em 0
+  padding 1em 0
+  grid-template-columns .25fr .5fr 1fr 1fr 1fr
+  +from-width($sm)
+    grid-template-columns .5fr 1fr 1fr 1fr 1fr
   &:not(:last-child)
     border-bottom solid 1px $gray
   &-title, &-result

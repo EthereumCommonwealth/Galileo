@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Layout from '../components/commons/Layout';
 import Header from '../components/commons/Header';
+import Footer from '../components/commons/Footer';
 
 class Transaction extends PureComponent {
   constructor(props) {
@@ -9,9 +10,11 @@ class Transaction extends PureComponent {
   }
 
   render() {
+    const { match } = this.props;
     return (
       <Layout className='Transaction'>
-        <Header />
+        <Header chain={match.params.chain} />
+        <Footer />
       </Layout>
     );
   }

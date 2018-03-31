@@ -1,11 +1,14 @@
 @import './vars.styl'
 @import './base.styl'
 @import './components/Header.styl'
+@import './components/Footer.styl'
 @import './components/Loader.styl'
 @import './components/LatestBlocks.styl'
 @import './components/LatestBlocksResults.styl'
 @import './components/TransactionsPerDay.styl'
 @import './components/MarketStatus.styl'
+@import './components/ChainList.styl'
+@import './components/SingleChain.styl'
 @import './normalize.styl'
 
 .TwoColumnsLayout
@@ -13,4 +16,4 @@
   grid-gap 1em
   grid-auto-rows 1fr
   +from-width($md)
-    grid-template-columns 1fr 1fr
+    grid-template-columns 2fr 1fr

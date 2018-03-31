@@ -5,6 +5,7 @@
   width 100%
   position fixed
   top 0
+  z-index 10
   &-logo
     width 250px
     margin 0
@@ -20,6 +21,12 @@
       display flex
       &-elem
         align-self center
+        &-active
+          font-style italic
+          font-weight bold
+          color $blue
+          &:hover
+            cursor default
         &-anchor
           padding 1em
           color #000
