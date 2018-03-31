@@ -30,7 +30,7 @@ class Layout extends PureComponent {
 }
 
 Layout.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
 }
 

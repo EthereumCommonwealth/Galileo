@@ -1,0 +1,29 @@
+.LatestBlocks
+  padding 2em 1em
+  &-top
+    display grid
+    grid-template-columns 1fr 1fr
+    align-items center
+    margin-bottom .5em
+    &-title
+      justify-self flex-start
+      margin 0
+      font-family $secondary-font
+    &-seemore
+      display block
+      justify-self flex-end
+      &:hover
+        cursor pointer
+  &-content
+    background $white
+    box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
+    padding 1em
+    border-radius 5px
+    display grid
+    border-bottom solid 3px $blue
+    &-head
+      display grid
+      grid-template-columns .5fr 1fr 1fr 1fr 1fr
+      padding 1em 0
+    &-title
+      font-weight 600

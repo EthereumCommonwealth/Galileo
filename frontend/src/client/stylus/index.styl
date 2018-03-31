@@ -2,4 +2,15 @@
 @import './base.styl'
 @import './components/Header.styl'
 @import './components/Loader.styl'
+@import './components/LatestBlocks.styl'
+@import './components/LatestBlocksResults.styl'
+@import './components/TransactionsPerDay.styl'
+@import './components/MarketStatus.styl'
 @import './normalize.styl'
+
+.TwoColumnsLayout
+  display grid
+  grid-gap 1em
+  grid-auto-rows 1fr
+  +from-width($md)
+    grid-template-columns 1fr 1fr
