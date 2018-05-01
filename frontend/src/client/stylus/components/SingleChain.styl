@@ -4,14 +4,12 @@
   grid-template-columns .25fr 1fr
   align-items center
   grid-gap .5em
-  background-color $white
   border-radius 5px
   box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
   padding 1em
   z-index 1
-  transition all 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms
-  &:hover
-    box-shadow 0 0 0 1px $blue
+  border solid 1px $blue
+  border-bottom solid 4px $blue
   &-figure
     width 50px
     margin 0
@@ -20,6 +18,7 @@
   &-name
     font-weight bold
     font-family $secondary-font
+    color #000
   &-anchor
     position absolute
     width 100%

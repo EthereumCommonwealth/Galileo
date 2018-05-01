@@ -164,3 +164,8 @@ venv.bak/
 .idea
 
 # End of https://www.gitignore.io/api/node,python
+
+.DS_Store
+
+#Ignoring server files
+frontend/src/server/public/

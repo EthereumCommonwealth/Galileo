@@ -4,7 +4,7 @@ import Layout from '../components/commons/Layout';
 import Header from '../components/commons/Header';
 import Footer from '../components/commons/Footer';
 
-class Transaction extends PureComponent {
+class BlockTransactions extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { redirect: false };
@@ -13,17 +13,17 @@ class Transaction extends PureComponent {
   render() {
     const { match } = this.props;
     return (
-      <Layout className='Transaction'>
+      <Layout className='BlockTransactions'>
         <Header chain={match.params.chain} />
         <br/><br/>
         <br/><br/>
         <br/><br/>
         <br/><br/>
-        Transaction
+        Block Transactions
         <Footer />
       </Layout>
     );
   }
 }
 
-export default hot(module)(Transaction)
+export default hot(module)(BlockTransactions);

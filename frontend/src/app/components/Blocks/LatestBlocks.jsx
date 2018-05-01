@@ -22,6 +22,7 @@ const LatestBlocks = ({ chain }) => (
         transactions='100 Txs'
         minedBy='ETC Pool'
         reward='3.15 ETC'
+        chain={chain}
       />
       <LatestBlocksResults
         number='55000'
@@ -29,6 +30,7 @@ const LatestBlocks = ({ chain }) => (
         transactions='100 Txs'
         minedBy='ETC Pool'
         reward='3.15 ETC'
+        chain={chain}
       />
       <LatestBlocksResults
         number='55000'
@@ -36,6 +38,7 @@ const LatestBlocks = ({ chain }) => (
         transactions='100 Txs'
         minedBy='ETC Pool'
         reward='3.15 ETC'
+        chain={chain}
       />
       <LatestBlocksResults
         number='55000'
@@ -43,6 +46,7 @@ const LatestBlocks = ({ chain }) => (
         transactions='100 Txs'
         minedBy='ETC Pool'
         reward='3.15 ETC'
+        chain={chain}
       />
       <LatestBlocksResults
         number='55000'
@@ -50,6 +54,7 @@ const LatestBlocks = ({ chain }) => (
         transactions='100 Txs'
         minedBy='ETC Pool'
         reward='3.15 ETC'
+        chain={chain}
       />
     </div>
   </div>

@@ -2,6 +2,7 @@ import Home from '../containers/Home';
 import Chain from '../containers/Chain';
 import Transaction from '../containers/Transaction';
 import Block from '../containers/Block';
+import BlockTransactions from '../containers/BlockTransactions';
 import Notfound from '../containers/NotFound';
 
 const routes = [
@@ -28,6 +29,12 @@ const routes = [
     name: 'transaction',
     exact: true,
     component: Block,
+  },
+  {
+    path: '/chain/:chain/block/:hash/transactions',
+    name: 'transaction',
+    exact: true,
+    component: BlockTransactions,
   },
   {
     name: 'notFound',

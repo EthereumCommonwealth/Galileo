@@ -64,10 +64,10 @@ if (ENV.isDevelopment()) {
   }
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
-  app.use(express.static('build'))
+  app.use(express.static(__dirname + '/public'));
   app.get('*', handleRender);
 } else {
-  app.use(express.static('public'))
+  app.use(express.static(__dirname + '/public'));
   app.get('*', handleRender);
 }
 
@@ -97,15 +97,9 @@ function renderFullPage(html, preloadedState) {
         <head>
           <title>Galileo</title>
           <meta name="description" content="">
-          <meta
-            name="viewport"
-            content="width=device-width,
-            initial-scale=1,
-            user-scalable=0,
-            maximum-scale=1,
-            minimum-scale=1,
-            shrink-to-fit=no"
-          >
+          <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0,
+            maximum-scale=1, minimum-scale=1, shrink-to-fit=no">
+          <link rel="stylesheet" href="/main.css" />
         </head>
         <body>
            <div id="root">${html}</div>

@@ -1,26 +1,24 @@
 .MarketStatus
-  display grid
-  grid-template-rows max-content
-  background $blue
-  margin-top 2em
-  box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
-  padding 1em
-  border-radius 5px
+  display flex
+  flex-direction column
   &-title
     margin 0
     font-family $secondary-font
     font-size 18px
-    color $white
-    font-size 24px
   &-content
     display grid
+    padding 1em
+    margin-top 1em
     grid-gap 1em
+    border solid 1px $blue
+    border-bottom solid 4px $blue
+    border-radius 5px
+    box-shadow 0 14px 14px 0 rgba(29, 53, 77, 0.06)
     &-element
       display grid
       align-items center
       grid-gap 1em
       grid-template-columns 1fr 1fr
-      color $white
       font-size 22px
       &-chain
         position relative

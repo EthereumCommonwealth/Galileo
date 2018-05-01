@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 const MarketStatus = ({ chain }) => (
   <div className='MarketStatus'>
     <div>
-      <h2 className='MarketStatus-title'>Market</h2>
-      <hr className='MarketStatus-divider' />
+      <h2 className='MarketStatus-title'>Market Status</h2>
     </div>
     <div className='MarketStatus-content'>
       <div className='MarketStatus-content-element'>

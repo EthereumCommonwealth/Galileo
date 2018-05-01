@@ -1,6 +1,4 @@
-import initialState from '../initialState';
-
-export default function authenticated(state = initialState, { type, payload }) {
+export default function authenticated(state = {}, { type, payload }) {
   switch (type) {
     case 'SET_LOGGED':
       return payload;

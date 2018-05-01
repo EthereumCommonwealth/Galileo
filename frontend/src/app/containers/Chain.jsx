@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
+import { hot } from 'react-hot-loader'
 import Layout from '../components/commons/Layout';
 import TwoColumnsLayout from '../components/commons/TwoColumnsLayout';
 import Header from '../components/commons/Header';
@@ -36,4 +37,4 @@ Chain.propTypes = {
   match: PropTypes.object,
 };
 
-export default Chain;
+export default hot(module)(Chain);

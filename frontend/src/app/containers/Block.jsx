@@ -1,23 +1,19 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { hot } from 'react-hot-loader';
 import Layout from '../components/commons/Layout';
 import Header from '../components/commons/Header';
 import Footer from '../components/commons/Footer';
 
-class Block extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { redirect: false };
-  }
+const Block = ({ match }) => (
+  <Layout className='Block'>
+    <Header chain={match.params.chain} />
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    Block
+    <Footer />
+  </Layout>
+)
 
-  render() {
-    const { match } = this.props;
-    return (
-      <Layout className='Block'>
-        <Header chain={match.params.chain} />
-        <Footer />
-      </Layout>
-    );
-  }
-}
-
-export default Block
+export default hot(module)(Block);

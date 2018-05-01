@@ -1,13 +1,19 @@
 const webpack = require('webpack');
 const path = require('path');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nib = require('nib');
+const rupture = require('rupture');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: ['webpack-hot-middleware/client', './src/app/index.js'],
+  node: {
+    fs: 'empty',
+  },
+  entry: ['./src/app/index.js'],
   mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
   output: {
-    path: '/',
+    path: path.join(process.cwd(), './src/server/public'),
     filename: 'main.js',
     publicPath: '/'
   },
@@ -33,17 +39,10 @@ module.exports = {
       },
       {
         test: /\.css|.styl$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              use: [require('nib')(), require('rupture')()],
-              import: ['~nib/lib/nib/index.styl', '~rupture/rupture/index.styl']
-            },
-          },
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'stylus-loader']
+        }),
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -91,5 +90,18 @@ module.exports = {
     new TransferWebpackPlugin([
       { from: 'client' },
     ], path.resolve(__dirname, 'src')),
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      options: {
+        stylus: {
+          use: [nib(), rupture()],
+          import: [
+            '~nib/lib/nib/index.styl',
+            '~rupture/rupture/index.styl',
+          ],
+        },
+      },
+    }),
+    new ExtractTextPlugin('[name].css', { allChunks: true }),
   ],
 }

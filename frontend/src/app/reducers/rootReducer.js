@@ -1,12 +1,20 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import authReducer from './authReducer';
+import mockReducer from './mockReducer';
 
 const rootReducer = combineReducers(
   {
     routing: routerReducer,
-    authenticated: authReducer,
+    activeChain: mockReducer,
+    chainList: mockReducer,
+    latestBlocks: mockReducer,
+    transactionsPerDay: mockReducer,
+    marketInfo: mockReducer,
+    transactionStatus: mockReducer,
+    blockInfo: mockReducer,
+    blockTransactions: mockReducer,
+    addressSummary: mockReducer,
   });
 
 export default rootReducer;
